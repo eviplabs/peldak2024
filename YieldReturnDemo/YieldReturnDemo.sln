@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YieldReturnDemo", "YieldReturnDemo.csproj", "{289AB7F4-40D5-475D-AB3A-09B94A32F451}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{289AB7F4-40D5-475D-AB3A-09B94A32F451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{289AB7F4-40D5-475D-AB3A-09B94A32F451}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{289AB7F4-40D5-475D-AB3A-09B94A32F451}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{289AB7F4-40D5-475D-AB3A-09B94A32F451}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2A658741-647E-42E9-A7CD-3647760624C3}
+	EndGlobalSection
+EndGlobal
