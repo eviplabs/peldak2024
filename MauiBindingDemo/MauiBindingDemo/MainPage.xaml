@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiBindingDemo"
+             x:Class="MauiBindingDemo.MainPage">
+    <ContentPage.Resources>
+        <local:AgeToColorConverter x:Key="converter" />
+    </ContentPage.Resources>
+    
+    <HorizontalStackLayout>
+        <Frame>
+            <VerticalStackLayout>
+                <Label Text="Model:" />
+                <Entry Text="{Binding CarModel}" />
+
+                <Label Text="Age:" />
+                <HorizontalStackLayout>
+                    <Label 
+                        Text="{Binding CarAge}" WidthRequest="20"
+                        HeightRequest="50" Margin="0,5,0,0"/>
+                    
+                    <Slider
+                        x:Name="CarAgeSlider"
+                        Minimum="0"
+                        Maximum="30"
+                        Value="{Binding CarAge}" 
+                        WidthRequest="100" />
+                </HorizontalStackLayout>
+
+                <Button
+                    x:Name="CounterBtn"
+                    Text="Add car to list"
+                    Clicked="OnAddItemClicked" />
+
+                <Button
+                    Text="Reset entry fields"
+                    Clicked="ResetEntriesButtonClicked" />
+            </VerticalStackLayout>
+        </Frame>
+
+        <Frame>
+            <VerticalStackLayout>
+                <Label Text="Available cars:" />
+                <CollectionView x:Name="CarListingControl" ItemsSource="{Binding CarList}"
+                                WidthRequest="200" HeightRequest="200" SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="local:Car">
+                            <HorizontalStackLayout WidthRequest="300" HeightRequest="40"
+                                    Padding="10" Spacing="10">
+                                <BoxView
+                                    Color="{Binding Age, Converter={StaticResource converter}}"
+                                    HeightRequest="20" WidthRequest="20" CornerRadius="5"/>
+                                <Label Text="{Binding Model}" VerticalTextAlignment="Center" />
+                            </HorizontalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </Frame>
+
+        <Frame>
+            <VerticalStackLayout>
+                <Label Text="Model name:" />
+                <Entry
+                    BindingContext="{x:Reference Name=CarListingControl}"
+                    Text="{Binding SelectedItem.Model}"
+                    WidthRequest="200" HeightRequest="50" HorizontalOptions="Start" />
+
+                <Label Text="Age:" />
+                <HorizontalStackLayout>
+                    <Slider
+                        Minimum="0" Maximum="30"
+                        BindingContext="{x:Reference Name=CarListingControl}"
+                        Value="{Binding SelectedItem.Age}"
+                        BackgroundColor="{Binding SelectedItem.Age,
+                            Converter={StaticResource converter}}"
+                        WidthRequest="200" HeightRequest="50" VerticalOptions="Center" />
+
+                    <Label
+                        BindingContext="{x:Reference Name=CarListingControl}"
+                        Text="{Binding SelectedItem.Age}"
+                        WidthRequest="200" HeightRequest="50" VerticalOptions="Center"
+                        Margin="10,9,0,0"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Frame>
+
+    </HorizontalStackLayout>
+
+</ContentPage>
